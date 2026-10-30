@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formula 1 Race Intelligence Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<nav>
+  <a class="logo" href="#home"><b>F1</b>RACE INTELLIGENCE</a>
+  <ul><li><a href="#project">Project</a></li><li><a href="#dashboard">Dashboard</a></li><li><a href="#story">Story</a></li><li><a href="#insights">Insights</a></li><li><a href="#drivers">Drivers</a></li></ul>
+  <a class="btn red" href="#contact">Contact</a>
+</nav>
+
+<header class="hero" id="home">
+  <svg class="track" viewBox="0 0 400 260" fill="none" aria-hidden="true"><path d="M60 190 C30 150 50 90 110 80 L200 70 C260 60 270 110 320 100 C380 90 390 160 340 190 C300 215 260 180 220 200 C170 225 90 235 60 190Z" stroke="#e10600" stroke-width="10" opacity=".35"/><path d="M60 190 C30 150 50 90 110 80 L200 70 C260 60 270 110 320 100 C380 90 390 160 340 190 C300 215 260 180 220 200 C170 225 90 235 60 190Z" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 8"/><circle id="car" r="6" fill="#f5c518"/></svg>
+  <h1>FORMULA <span>1</span></h1>
+  <p class="sub">RACE INTELLIGENCE DASHBOARD</p>
+  <p>Deep-dive analytics into Formula 1 results from 2010 onward: driver performance, team strategy, reliability and circuit trends.</p>
+  <div class="cta"><a class="btn red" href="#dashboard">View dashboard</a><a class="btn" href="#story">Explore story</a></div>
+  <div class="hstats">
+    <div><div class="num" data-n="17">0</div><div class="lab">Seasons</div></div>
+    <div><div class="num" data-n="6464">0</div><div class="lab">Race outcomes logged</div></div>
+    <div><div class="num" data-n="29">0</div><div class="lab">Circuits</div></div>
+    <div><div class="num" data-n="10">0</div><div class="lab">Teams</div></div>
+  </div>
+</header>
+
+<div class="band"><div class="row" id="band"></div></div>
+
+<section id="project">
+  <div class="two">
+    <div class="panel"><h3>Teams by points</h3><div id="miniTeams"></div><p class="note">Bars are scaled from the Team Performance Ranking in the Tableau dashboard.</p></div>
+    <div>
+      <h2>Turning race results into championship insight</h2>
+      <p class="lead">One results table covers every driver, team, circuit and weather condition from 2010 to 2026. Tableau turns it into charts you can filter by season, race date and DNF reason.</p>
+      <ul class="feat">
+        <li><b>Global race overview</b><span>Driver entries by Grand Prix nation.</span></li>
+        <li><b>Driver performance</b><span>Points, podiums and positions gained.</span></li>
+        <li><b>Constructor battle</b><span>Team points and reliability across seasons.</span></li>
+        <li><b>Pit and tyre strategy</b><span>Starting compounds, undercuts, overcuts.</span></li>
+      </ul>
+      <a class="btn red" href="#dashboard">Explore dashboard</a>
+    </div>
+  </div>
+</section>
+
+<section id="insights" style="background:#101012">
+  <h2>Intelligence dimensions</h2>
+  <p class="lead">Six angles on the data, taken from the fields in the workbook.</p>
+  <div class="cards">
+    <div class="card"><h3>Circuit analysis</h3><p>Circuit type, length, laps, altitude and country for 29 circuits.</p></div>
+    <div class="card"><h3>Pit stops</h3><p>Stop counts, average pit time and gap to the leader.</p></div>
+    <div class="card"><h3>Tyre strategy</h3><p>Starting compound and full strategy for each entry.</p></div>
+    <div class="card"><h3>Driver head to head</h3><p>Grid position, finish position and positions gained.</p></div>
+    <div class="card"><h3>Points progression</h3><p>Points and podium rate by driver, team and season.</p></div>
+    <div class="card"><h3>Weather and safety cars</h3><p>Wet races, temperature, safety car and VSC laps, red flags.</p></div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <h2>Race intelligence dashboard</h2>
+  <p class="lead">Compare drivers, teams and countries. Switch the view to re-sort each chart.</p>
+  <div class="filters" role="group" aria-label="Chart view">
+    <button aria-pressed="true" data-v="points">Points</button>
+    <button aria-pressed="false" data-v="alpha">A to Z</button>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Driver performance leaderboard</h3><div id="chDrivers"></div></div>
+    <div class="panel"><h3>Team performance ranking</h3><div id="chTeams"></div></div>
+    <div class="panel"><h3>Global driver distribution by nation</h3><div id="chCountry"></div></div>
+    <div class="panel"><h3>Reliability: DNF share by reason</h3><div id="chDnf"></div><p class="note">Illustrative split. Replace with the Dnf Reason counts from your extract.</p></div>
+  </div>
+</section>
+
+<section id="story" style="background:#101012">
+  <h2>From global overview to championship success</h2>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="panel story" id="storyBody" role="tabpanel"></div>
+</section>
+
+<section id="drivers">
+  <h2>Driver spotlight</h2>
+  <p class="lead">Points leaders in the dashboard leaderboard.</p>
+  <div class="cards" id="spot"></div>
+</section>
+
+<section id="contact" style="background:#101012">
+  <h2>Contact</h2>
+  <p class="lead">Questions about the analysis or the dataset.</p>
+  <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Message noted'">
+    <input aria-label="Name" placeholder="Your name" required>
+    <input aria-label="Email" type="email" placeholder="Email address" required>
+    <textarea aria-label="Message" rows="4" placeholder="Your message"></textarea>
+    <button class="btn red" type="submit">Send message</button>
+  </form>
+</section>
+<footer>Formula 1 Race Intelligence. Data: race_results workbook, 2010–2026. Built from a Tableau Public capstone project.</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
